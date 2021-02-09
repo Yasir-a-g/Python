@@ -1,0 +1,46 @@
+#issue in this code it doesnt stop + doesnt count down guess chances + and it doesnt print guess again 
+
+#import random
+from random import randint
+EASY_LEVEL_TURN = 10
+HARD_LEVEL_TURN = 5
+
+
+easy = 10
+hard = 5
+print("welcome to a guess game")
+print("iam thinking of number between 1 and 100")
+
+answer = randint(1, 100)
+guess = 0
+
+def check_answer(guess, answer, turn):
+  if guess > answer :
+    print("too high")
+    return turn -1 
+  elif guess < answer:
+    print("too low")
+    return turn -1
+
+  else:
+    print(f"you got it answer is {answer}")
+  
+
+def set_difficulty():
+  level = input("chose difficulity between 'easy' or 'hard'")
+  if level == "easy":
+    global turn
+    return EASY_LEVEL_TURN
+
+  else:
+    return HARD_LEVEL_TURN  
+
+turn = set_difficulty()
+
+
+
+print(f"you have {turn} attempts ramainging to guess the number")
+while guess!= answer:
+  guess = int(input("make a guess"))
+
+  check_answer(guess, answer, turn)
