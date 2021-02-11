@@ -1,0 +1,63 @@
+#display Art
+#from art import logo, vs
+#print(logo)
+from game_data import data
+#from replit import clear
+#Generate a random account from the GeneratorExit
+import random
+score = 0
+def format_data(account):
+  """format the account data into printable format"""
+  account_name = account["name"]
+  account_descr = account["description"]
+  account_country = account["country"]
+  return f"{account_name}, a {account_descr}, {account_country}"
+
+def check_answer(guess, follower_account_a, follower_account_b):
+  """take the user guess and follower counts and returns if they got it right """
+  if follower_account_a > follower_account_b:
+    return guess == "a"
+  else: 
+    return guess == "b"
+#give user feedback on their guess 
+#score keeping
+#make the game repeatable.
+account_b = random.choice(data)
+game_should_continue = True 
+while game_should_continue:
+  account_a = account_b
+  account_b = random.choice(data)
+ 
+  while account_a == account_b: 
+    account_b = random.choice(data)
+  print(f"compare A: {format_data(account_a)}")
+  print(vs)
+  print(f"agesint B: {format_data(account_b)}")
+
+  #how to format the account data into printable format
+
+  #ask user to guess
+  guess = input("who has more follower? type or 'A' or 'b'").lower()
+
+  #check if user is correct.
+
+  ##Get folllower count of each account
+  follower_account_a = account_a["follower_count"]
+  follower_account_b = account_b["follower_count"]
+  is_correct = check_answer(guess, follower_account_a, follower_account_b)
+  ## use if statement to check if user is correct
+  #clear()
+  #print(logo)
+  if is_correct:
+    score +=1
+    print(f"you are right! Current score {score}")
+  else:
+    game_should_continue = False
+    print(f"dorry, that wrong. Final score {score}")
+
+
+#making account at positition B become the next aCCOUNT at posistion AssertionError
+
+
+#clear the screen 
+
